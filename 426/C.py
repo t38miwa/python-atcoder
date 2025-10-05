@@ -13,13 +13,11 @@
 N,Q = map(int,input().split())
 
 # PCのバージョンの初期状態
-# PC = {}
-# for i in range(N):
-#     PC[i+1] = 1
+PC = {}
+for i in range(N):
+    PC[i+1] = 1
 
-PC = [1 for i in range(N)]
-
-min = 0
+min = 1
 for i in range(Q):
     X,Y = map(int,input().split())
     # 2 6の場合、バージョン2以下のPCをバージョン6にする
@@ -27,12 +25,12 @@ for i in range(Q):
     # PCのキーがminからXの値の合計を出力する
     # 累積和で実装すればいけるのだろうか？
     sum = 0
-    for j in range(min,X):
-        sum += PC[j]
-        PC[j] = 0
-    if sum > 0:
-        min = X
+    for i in range(min,X+1):
+        sum += PC[i]
+        PC[i] = 0
 
     # sum = sum(map(PC.get, range(min,X+1)))
+    
     print(sum)
-    PC[Y-1] += sum
+    min = X
+    PC[Y] += sum

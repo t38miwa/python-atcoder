@@ -1,0 +1,10 @@
+N = int(input())
+
+A = list(map(int,input().split()))
+
+A.sort()
+
+if A.sort() == A:
+    print('Yes')
+else:
+    print('No')

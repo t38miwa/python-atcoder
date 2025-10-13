@@ -17,8 +17,10 @@ ans = 0
 temp = 0
 for i in range(N):
     temp = sum(A)
+    # 16を文字に変換し、1,6の数字にする。それをsumで計算しans = 7
     ans = sum(map(int, str(temp)))
     A.append(ans)
+    print(temp,ans,A)
 print(temp)
 # よく使う入力パターン
 # a = [int(input()) for _ in range(n)]

@@ -1,29 +1,20 @@
-# 電球1は2個のスイッチに繋がっている
-#スイッチ1,2のうちonになっているスイッチの個数を割った余り0に等しい時に点灯
-def bitsum(k,s,p):
-    for bit in range(1<<N):
-        subset = []
-        for i in range(N):
-            # bit = 01 10
-            if bit & (1 << i):
-                subset.append(i+1)
-        if subset == s and len(subset) % 2 == p:
-            print("subset",subset)
-        if subset == s and len(subset) % 2 != p:
-            print("subset",subset,"No")
+N, M = map(int, input().split())
+lamps = [list(map(lambda x:int(x)-1, input().split()))[1:]
+         for _ in range(M)]
+p = list(map(int, input().split()))
 
-N,M = map(int,input().split())
-k = []
-s = []
-for i in range(M):
-    data = list(map(int,input().split()))
-    k.append(data[0])
-    s.append(data[1:])
-P = list(map(int,input().split()))
+ans = 0
 
-for i in range(M):
-    bitsum(k[i],s[i],P[i])
-# off off 00
-# off on  01
-# on  off 10
-# on  on  11
+# ビット全探索で全ての電球が点灯する組み合わせを見つける
+for bit in range(1 << N):
+    for i in range(M):
+        on_sum = 0
+        for j in range(N):
+            if bit >> j & 1 and j in lamps[i]:
+                on_sum += 1
+        if on_sum % 2 != p[i]:
+            break
+    else:
+        ans += 1
+
+print(ans)

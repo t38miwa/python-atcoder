@@ -8,11 +8,8 @@ a = list(map(int,input().split()))
 s = [0] * (n+1)
 for i in range(n):
     s[i+1] = s[i] + a[i]
-print(s)
 
 ans = 0
 for i in range(n-k+1):
     ans += s[i+k] - s[i]
-    print(s[i+k] - s[i])
-    print(ans)
 print(ans)

@@ -1,5 +1,18 @@
-S,A,B,X = map(int, input().split())
+# 長さ5の数列A=[1 2 4 8 16]と1以上5以下の整数3が与えられる。
+# 長さ3の連続する部分列が5-3+1=3個ある
 
-# X // (A+B)完全なサイクルの回数
-# S * A　１サイクルで走る距離
-print(X // (A+B) * S * A + min(A, X % (A+B)) * S)
+n,k = map(int,input().split())
+a = list(map(int,input().split()))
+
+# 配列Aに対して、配列S
+s = [0] * (n+1)
+for i in range(n):
+    s[i+1] = s[i] + a[i]
+print(s)
+
+ans = 0
+for i in range(n-k+1):
+    ans += s[i+k] - s[i]
+    print(s[i+k] - s[i])
+    print(ans)
+print(ans)

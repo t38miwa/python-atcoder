@@ -1,15 +1,12 @@
-# 長さ5の数列A=[1 2 4 8 16]と1以上5以下の整数3が与えられる。
-# 長さ3の連続する部分列が5-3+1=3個ある
+N,K = map(int,input().split())
+A = list(map(int,input().split()))
 
-n,k = map(int,input().split())
-a = list(map(int,input().split()))
+S = [0]*(N+1)
 
-# 配列Aに対して、配列S
-s = [0] * (n+1)
-for i in range(n):
-    s[i+1] = s[i] + a[i]
+for i in range(N):
+    S[i+1] = S[i] + A[i]
 
 ans = 0
-for i in range(n-k+1):
-    ans += s[i+k] - s[i]
+for i in range(N-K+1):
+    ans += S[i+K] - S[i]
 print(ans)

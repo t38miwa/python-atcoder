@@ -1,23 +1,12 @@
-p,q=input().split()
+P,Q = input().split()
+num_P = ord(P) - 65
+num_Q = ord(Q) - 65
 
-dis=[3,1,4,1,5,9]
+dis = [3,1,4,1,5,9]
 
-abc=['A','B','C','D','E','F','G']
+S = [0]*7
 
-p_index=0
-q_index=0
-sum=0
-for i in range(len(abc)):
-    if p==abc[i]:   
-        p_index=i
-    elif q==abc[i]:   
-        q_index=i
+for i in range(6):
+    S[i+1] = S[i] + dis[i]
 
-if p_index<q_index:
-    for i in range(p_index,q_index):
-        sum+=dis[i]
-else:
-    for i in range(q_index,p_index):
-        sum+=dis[i]
-
-print(sum)
+print(abs(S[num_P] - S[num_Q]))

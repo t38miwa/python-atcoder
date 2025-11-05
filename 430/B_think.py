@@ -1,17 +1,11 @@
-# 3行3列からなるグリッド、#なら黒、.なら白
-# 2行2列を取り出す方法はいくつある
+N,M=map(int,input().split())
+S=[input() for _ in range(N)]
 
-N,M = map(int,input().split())
-S = [list(input()) for _ in range(N)]
+grid_set=set()
+for i in range(N-M+1):
+  for j in range(N-M+1):
+    grid = tuple(S[ii][j:j+M] for ii in range(i,i+M))
+    print(grid)
+    grid_set.add(grid)
 
-# resultというリストに組み合わせを保存する
-results = []
-for k in range(N-M):
-    for j in range(N-1):
-        result = []
-        for i in range(N-1):
-            result.append(S[i+k][j:j+M])
-        if result not in results:
-            results.append(result)
-        print(result)
-print(len(results))
+print(len(grid_set))
